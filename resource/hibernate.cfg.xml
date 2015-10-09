@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory name="sessionFactory">
+
+		<!-- Data Source de homologacao -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>  
+        <!-- <property name="connection.url">jdbc:mysql://54.207.126.46:3306/atos_bpm_act</property>   -->
+        <property name="connection.url">jdbc:mysql://52.24.185.101:3306/atos_bpm_act</property>  
+        <property name="connection.username">root</property>  
+    	<property name="connection.password">root.mysql</property>  
+        <property name="hibernate.connection.isolation">2</property>
+		<!-- 
+		<property name="hibernate.connection.datasource">java:/comp/env/jdbc/SCE</property>
+		 -->
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> 
+    	<property name="hibernate.c3p0.preferredTestQuery">SELECT 1</property> 
+		<property name="hibernate.c3p0.min_size">2</property>
+		<property name="hibernate.c3p0.max_size">10</property>
+		<property name="hibernate.c3p0.timeout">5</property>
+		<property name="hibernate.c3p0.acquire_increment">2</property>
+		<property name="hibernate.c3p0.idle_test_period">180</property>
+		<property name="connection.autoReconnect">true</property>
+    	<property name="connection.autoReconnectForPools">true</property>
+    	<property name="connection.is-connection-validation-required">true</property>
+    
+		
+		<!-- Define o dialeto sql utilizado no banco. -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		
+		<!-- Configuracao de cache 
+		<property name="hibernate.cache.provider_class">
+			org.hibernate.cache.EhCacheProvider
+		</property>
+		<property name="hibernate.cache.use_query_cache">true</property>
+		<property name="hibernate.cache.use_minimal_puts">true</property>
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+		<property name="hibernate.cache.use_query_cache">false</property>
+		  -->
+		
+		<!-- Disable second-level cache. -->
+		<property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		<property name="hibernate.cache.use_minimal_puts">false</property>
+		<property name="hibernate.cache.use_second_level_cache">false</property>
+		<property name="hibernate.cache.use_query_cache">false</property>
+		
+		<property name="hibernate.cache.use_structured_entries">true</property>
+		<property name="hibernate.current_session_context_class">thread</property>
+		<property name="hibernate.max_fetch_depth">3</property>
+		<property name="hibernate.show_sql">false</property>
+		<property name="hibernate.debug">false</property>
+		<property name="hibernate.format_sql">false</property>
+		<property name="hibernate.use_sql_comments">false</property>
+		<property name="hibernate.generate_statistics">false</property>
+		<property name="hibernate.bytecode.use_reflection_optimizer">true</property>
+		
+		<!-- Mapeamento das classes referentes a Vitrine de Ideias -->
+		
+		<mapping class="br.com.unimed.ideia.entidade.Ideia" />
+		<mapping class="br.com.unimed.ideia.entidade.Ciclo" />
+		<mapping class="br.com.unimed.ideia.entidade.Processo" />
+		<mapping class="br.com.unimed.ideia.entidade.ProcessoEtapa" />
+		
+		
+	</session-factory>
+</hibernate-configuration>

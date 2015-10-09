@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<constant name="struts.devMode" value="false" />
+<constant name="struts.action.excludePattern" value=".*unfiltered.*,.*\\.nofilter"/>
+<constant name="struts.ui.theme" value="simple" />
+
+   <package name="Ideias" extends="struts-default">
+        
+      <action name="consultaIdeias.*" method="{1}" 
+            class="br.com.unimed.ideia.action.ConsultaIdeia">
+            <result name="iniciarConsulta">consultar/consultarIdeia.jsp</result>
+      </action>
+      <action name="pesquisarIdeias" class="br.com.unimed.ideia.action.ConsultaIdeia">
+            <result name="iniciarConsulta">consultar/consultarIdeia.jsp</result>
+      </action>
+      
+       
+      <!-- <action name="consultaIdeias" 
+            class="br.com.unimed.ideia.action.ConsultaIdeia" method="iniciarConsulta">
+            <result name="iniciarConsulta">consultar/consultarIdeia.jsp</result>
+      </action>
+      
+      <action name="pesquisarIdeias" 
+            class="br.com.unimed.ideia.action.ConsultaIdeia" method="pesquisar">
+            <result name="resultado">consultar/resultado.jsp</result>
+      </action> --> 
+   </package>
+</struts>
